@@ -1,0 +1,26 @@
+web:
+  image: 'gitlab/gitlab-ce:latest'
+  restart: always
+  hostname: "${DOMAIN_NAME}"
+
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      # Add any other gitlab.rb configuration here, each on its own line
+      external_url "https://${DOMAIN_NAME}"
+      gitlab_rails['initial_root_password'] = "${PASSWORD}"
+      gitlab_rails['gitlab_shell_ssh_port'] = 2224
+      nginx['redirect_http_to_https'] = true
+      nginx['ssl_certificate'] = "/etc/gitlab/ssl/fullchain.pem"
+      nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/privkey.pem"
+      nginx['ssl_dhparam'] = "/etc/gitlab/ssl/dhparams.pem"
+
+  ports:
+    - '80:80'
+    - '443:443'
+    - '2224:22'
+
+  volumes:
+    - '${GITLAB_HOME}/config:/etc/gitlab'
+    - '${GITLAB_HOME}/logs:/var/log/gitlab'
+    - '${GITLAB_HOME}/data:/var/opt/gitlab'
+    - '${GITLAB_HOME}/config/ssl:/etc/gitlab/ssl'~                                                       
