@@ -10,7 +10,7 @@ Define a Domain for your server and config DNS Records for this server.
 Clone Project and run `./deploy.sh` then enter that configured domain and your email for certbot and some Password for your GitLab `root` user.
 
 ### note:
-    if you want to add any other gitlab.rb arguments to your GitLab you should add in `docker-compose.yaml` file before you run `./deploy.sh`. This is a link of all gitlab.rb argument that you can find [gitlab.rb list](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/files/gitlab-config-template/gitlab.rb.template#modal-confirm-fork-webide)
+if you want to add any other gitlab.rb arguments to your GitLab you should add in `docker-compose.yaml` file before you run `./deploy.sh`. This is a link of all gitlab.rb argument that you can find [gitlab.rb list](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/files/gitlab-config-template/gitlab.rb.template#modal-confirm-fork-webide)
 
 ## step4:
 Now you can use your GitLab Platform in `https://YOURDOMAIN` and login with root user and your password.
